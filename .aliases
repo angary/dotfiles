@@ -1,5 +1,11 @@
 #!/bin/zsh
 
+# Git
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+alias gs="git status -sb"
+
 # Exa
 alias l="exa --icons --group-directories-first"
 alias ll="exa --icons --group-directories-first --long --all --git"
