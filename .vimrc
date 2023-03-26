@@ -8,7 +8,6 @@ set hidden " Hide buffers when they are abandoned
 set mouse=a " Enable mouse usage (all modes)
 
 
-
 " Don't try to be vi compatible
 set nocompatible
 
@@ -23,8 +22,8 @@ syntax on
 " For plugins to load correctly
 filetype plugin indent on
 
-" TODO: Pick a leader key
-" let mapleader = ","
+" Leader key
+let mapleader = ","
 
 " Security
 set modelines=0
@@ -35,7 +34,7 @@ set number
 " Show file stats
 set ruler
 
-" Blink cursor on error instead of beeping (grr)
+" Blink cursor on error instead of beeping
 set visualbell
 
 " Encoding
@@ -113,3 +112,10 @@ let g:solarized_termtrans=1
 " Allow copy into clipboard
 set clipboard=unnamed
 
+" Files, backups and undo
+set nobackup
+set nowb
+set noswapfile
+
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
