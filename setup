@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Copy files
+cp ./.vimrc ~/.vimrc
+
+# Run files
+source aliases
+source functions
+
+# Symlink files
