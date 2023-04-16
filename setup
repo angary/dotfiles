@@ -1,10 +1,24 @@
 #!/bin/sh
 
+
+copy() {
+    cp $HOME/dev/dotfiles/$1 $2
+}
+
+setup() {
+    source $HOME/dev/dotfiles/$1
+}
+
+symblink() {
+    ln -s $HOME/dev/dotfiles/$1 $2
+}
+
 # Copy files
-cp ./.vimrc ~/.vimrc
+copy .vimrc ~/.vimrc
 
 # Run files
-source aliases
-source functions
+setup aliases
+setup functions
+
 
 # Symlink files
