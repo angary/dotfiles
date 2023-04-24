@@ -12,11 +12,18 @@ symblink() {
     ln -s $HOME/dev/dotfiles/$1 $2
 }
 
+setup_dir() {
+    for entry in $(ls $HOME/dev/dotfiles/$1)
+        do setup "$1/$entry"
+    done
+}
+
 # Copy files
 copy .vimrc ~/.vimrc
 
 # Run files
 setup aliases
-setup functions
+
+setup_dir functions
 
 # Symlink files
