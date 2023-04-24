@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 copy() {
     cp $HOME/dev/dotfiles/$1 $2
 }
@@ -19,6 +18,5 @@ copy .vimrc ~/.vimrc
 # Run files
 setup aliases
 setup functions
-
 
 # Symlink files

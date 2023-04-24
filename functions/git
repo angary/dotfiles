@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# Fuzzy git checkout
+gch() {
+	git checkout "$(git branch --all | fzf | tr -d ' ')"
+}
+
+
+grr() {
+	git fetch origin "$1" && git reset --hard origin/$1
+}
