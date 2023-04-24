@@ -8,8 +8,8 @@ setup() {
     source $HOME/dev/dotfiles/$1
 }
 
-symblink() {
-    ln -s $HOME/dev/dotfiles/$1 $2
+symlink() {
+    [[ -e $2 ]] || ln -s $HOME/dev/dotfiles/$1 $2
 }
 
 setup_dir() {
@@ -27,3 +27,4 @@ setup aliases
 setup_dir functions
 
 # Symlink files
+symlink tmux.conf ~/.tmux.config
