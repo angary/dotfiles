@@ -1,27 +1,26 @@
 #!/bin/zsh
 
-# Extract out metadata for audio frames
-audio_frames() {
-	# Choose CSV headers, run ffmpeg, add headers into the file
-	headers="pkt_pts_time,pkt_duration_time,pkt_size"
-	ffprobe_output=$(ffprobe -select_streams a -show_entries "frame=${headers}" -print_format csv -i $1)
-	echo "frame,${headers}\n${ffprobe_output}" >$1.csv
-}
-
 # Get audio codec
 acodec() {
 	ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 $1
 }
 
+# Extract out metadata for audio frames into a csv file with headers
+aframes() {
+	headers="pkt_pts_time,pkt_duration_time,pkt_size"
+	ffprobe_output=$(ffprobe -select_streams a -show_entries "frame=${headers}" -print_format csv -i $1)
+	echo "frame,${headers}\n${ffprobe_output}" >$1.csv
+}
+
+# Extract raw audio into file, takes in additional optional argument for output file name
+extracta() {
+	file=$1
+	codec=$(acodec $1)
+	new_file=${2:-"${file%.*}.${codec}"}
+	ffmpeg -i $file -vn -acodec copy $new_file
+}
+
 # Get video codec
 vcodec() {
 	ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 $1
-}
-
-# Extract raw audio into file
-aextract() {
-	file=$1
-	codec=$(acodec $1)
-	new_file="${file%.*}.${codec}"
-	ffmpeg -i $file -vn -acodec copy $new_file
 }
