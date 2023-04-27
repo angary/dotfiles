@@ -2,7 +2,12 @@
 
 # Fuzzy git checkout
 gch() {
-	git checkout "$(git branch --all | fzf | tr -d ' ')"
+	git checkout "${1:-$(git branch --all | fzf | awk '{print $1}')}"
+}
+
+# Fuzzy git rebase for branches
+grb() {
+	git rebase "${1:-$(git branch --all | fzf | awk '{print $1}')}"
 }
 
 # Reset with remote

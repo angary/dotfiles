@@ -23,7 +23,6 @@ copy .vimrc ~/.vimrc
 
 # Run files
 setup aliases
-
 setup_dir functions
 
 # Symlink files
