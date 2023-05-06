@@ -1,16 +1,17 @@
 #!/bin/zsh
 
 # Fuzzy git checkout
-gch() {
+function gch() {
 	git checkout "${1:-$(git branch --all | fzf | awk '{print $1}')}"
 }
 
 # Fuzzy git rebase for branches
-grb() {
+function grb() {
 	git rebase "${1:-$(git branch --all | fzf | awk '{print $1}')}"
 }
 
 # Reset with remote
-grr() {
-	git fetch origin "$1" && git reset --hard origin/$1
+function grr() {
+	branch=${1:-$(git branch --show-current)}
+	git fetch origin "$branch" && git reset --hard origin/$branch
 }
