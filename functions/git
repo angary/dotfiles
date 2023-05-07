@@ -1,8 +1,18 @@
 #!/bin/zsh
 
-# Fuzzy git checkout
+# Commit all and push
+function gcamp() {
+	git commit -a -m $1 && git push
+}
+
+# Fuzzy git checkout for branches
 function gch() {
 	git checkout "${1:-$(git branch --all | fzf | awk '{print $1}')}"
+}
+
+# Fuzzy git merge for branches
+function gmr() {
+	git merge "${1:-$(git branch --all | fzf awk '{print $1}')}"
 }
 
 # Fuzzy git rebase for branches
