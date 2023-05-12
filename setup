@@ -1,5 +1,9 @@
 #!/bin/sh
 
+add_to_path() {
+    export PATH="$PATH:$HOME/dev/dotfiles/$1"
+}
+
 copy() {
     cp $HOME/dev/dotfiles/$1 $2
 }
@@ -13,10 +17,13 @@ symlink() {
 }
 
 setup_dir() {
-    for entry in $(ls $HOME/dev/dotfiles/$1)
-        do setup "$1/$entry"
+    for entry in $(ls $HOME/dev/dotfiles/$1); do
+        setup "$1/$entry"
     done
 }
+
+# Add to path
+add_to_path scripts
 
 # Copy files
 copy .vimrc ~/.vimrc
