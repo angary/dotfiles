@@ -2,12 +2,10 @@
 
 # Commit all and push
 function gacp() {
-	if [ $# -eq 0 ]; then
-		read -p "git commit --amend and push force? [y/n]" -n 1 -r
-		[[ !$REPLY =~ ^[Yy]$ ]] && exit 1
-		git add -A && git commit --amend --no-edit && git push -f
+	if [[ $# -eq 0 ]]; then
+		git add -A && git commit --amend --no-edit && git push
 	else
-		git add -A && git commit -m $1 && git push
+		git add -A && git commit -m "$1" && git push
 	fi
 }
 
@@ -28,6 +26,6 @@ function grb() {
 
 # Reset with remote
 function grr() {
-	branch=${1:-$(git branch --show-current)}
-	git fetch origin "$branch" && git reset --hard origin/$branch
+	local branch=${1:-$(git branch --show-current)}
+	git fetch origin "$branch" && git reset --hard "origin/$branch"
 }
