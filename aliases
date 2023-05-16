@@ -30,7 +30,6 @@ alias gl="git log"
 alias gm="git merge"
 alias gp="git push"
 alias gpl="git pull"
-alias gr="git reset"
 alias gs="git status"
 
 # Ls (Exa)

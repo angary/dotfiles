@@ -3,7 +3,7 @@
 # Commit all and push
 function gacp() {
 	if [[ $# -eq 0 ]]; then
-		git add -A && git commit --amend --no-edit && git push
+		git add -A && git commit --amend --no-edit && git push --force-with-lease
 	else
 		git add -A && git commit -m "$1" && git push
 	fi
