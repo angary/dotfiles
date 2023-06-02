@@ -9,6 +9,9 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
+# GPAC
+alias mb="mp4box"
+
 # FFmpeg
 alias ffm="ffmpeg"
 alias ffp="ffprobe -hide_banner"
@@ -27,7 +30,6 @@ alias gl="git log"
 alias gm="git merge"
 alias gp="git push"
 alias gpl="git pull"
-alias gr="git reset"
 alias gs="git status"
 
 # Ls (Exa)
