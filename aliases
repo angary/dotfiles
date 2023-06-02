@@ -35,3 +35,6 @@ alias gs="git status"
 # Ls (Exa)
 alias l="exa --icons --group-directories-first"
 alias ll="exa --icons --group-directories-first -l -a"
+
+# UNSW CSE
+alias cse="ssh z5308213@login.cse.unsw.edu.au"
