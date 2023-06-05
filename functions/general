@@ -1,11 +1,11 @@
 #!/bin/zsh
 
-# Make a directory and cd into it
-mkcd() {
-    mkdir $1 && cd $_
-}
-
 # cd into a directory and list contents
 function cdls() {
     cd $1 && ls $_
+}
+
+# Make a directory and cd into it
+function mkcd() {
+    mkdir $1 && cd $_
 }
