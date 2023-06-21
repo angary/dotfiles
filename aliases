@@ -31,6 +31,7 @@ alias gll="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset 
 alias gm="git merge"
 alias gp="git push"
 alias gpl="git pull"
+alias gr="git reset"
 alias gs="git status"
 
 # Ls (Exa)
