@@ -23,7 +23,7 @@ function gch() {
 
 # Fuzzy git merge for branches
 function gmr() {
-	git merge "${1:-$(git branch --all | fzf awk '{print $1}')}"
+	git merge "${1:-$(git branch --all | fzf | awk '{print $1}')}"
 }
 
 # Fuzzy git rebase for branches
