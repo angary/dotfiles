@@ -9,12 +9,12 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
-# GPAC
-alias mb="mp4box"
-
 # FFmpeg
 alias ffm="ffmpeg"
 alias ffp="ffprobe -hide_banner"
+
+# General
+alias reload="source ~/.zshrc"
 
 # Git
 alias g="git"
@@ -35,6 +35,9 @@ alias gpl="git pull"
 alias gr="git reset"
 alias grh="git reset --hard"
 alias gs="git status"
+
+# GPAC
+alias mb="mp4box"
 
 # Ls (Exa)
 alias l="exa --icons --group-directories-first"
