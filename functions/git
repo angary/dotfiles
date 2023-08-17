@@ -21,6 +21,11 @@ function gch() {
 	git checkout "${1:-$(git branch --all | fzf | awk '{print $1}')}"
 }
 
+# Git fetch checkout
+function gfc() {
+	git fetch origin "$1" && git checkout FETCH_HEAD -b "$1"
+}
+
 # Fuzzy git merge for branches
 function gmr() {
 	git merge "${1:-$(git branch --all | fzf | awk '{print $1}')}"
