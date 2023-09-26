@@ -36,6 +36,11 @@ function grb() {
 	git rebase "${1:-$(git branch --all | fzf | awk '{print $1}')}"
 }
 
+# Git fetch, rebase and force push
+function gfrp() {
+	git fetch origin "$1":"$1" && git rebase "$1" && git push --force-with-lease
+}
+
 # Reset with remote
 function grr() {
 	local branch=${1:-$(git branch --show-current)}
