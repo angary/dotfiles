@@ -33,6 +33,7 @@ alias gm="git merge"
 alias gp="git push"
 alias gpl="git pull"
 alias gr="git reset"
+alias grb="git rebase --continue"
 alias grh="git reset --hard"
 alias gs="git status"
 
