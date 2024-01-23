@@ -9,11 +9,9 @@ function gacp() {
 	fi
 }
 
-# Delete local and remote branch
+# Delete branch matching regex
 function gbd() {
-	local branch=${1:-$(git branch --show-current)}
-	git branch -D $branch
-	git push -d origin $branch
+  	git branch --list "$1" | xargs -n 1 git branch -D
 }
 
 # Fuzzy git checkout for branches
