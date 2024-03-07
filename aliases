@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# Bazel
+alias b="bazel"
+alias bt="bazel test"
+
 # Clear
 alias c="clear"
 
