@@ -40,6 +40,7 @@ alias gr="git reset"
 alias grbc="git rebase --continue"
 alias grh="git reset --hard"
 alias gs="git status"
+alias gsu="git status --untracked-files=no"
 
 # GPAC
 alias mb="mp4box"
