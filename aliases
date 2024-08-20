@@ -51,6 +51,9 @@ alias mb="mp4box"
 alias l="exa --icons --group-directories-first"
 alias ll="exa --icons --group-directories-first -l -a"
 
+# Raspberry Pi
+alias rbp="ssh angary@raspberrypi.local"
+
 # UNSW CSE
 alias cse="ssh z5308213@login.cse.unsw.edu.au"
 
