@@ -47,9 +47,9 @@ alias gsu="git status --untracked-files=no"
 # GPAC
 alias mb="mp4box"
 
-# Ls (Exa)
-alias l="exa --icons --group-directories-first"
-alias ll="exa --icons --group-directories-first -l -a"
+# Ls (Eza)
+alias l="eza --icons --group-directories-first"
+alias ll="eza --icons --group-directories-first -l -a"
 
 # Raspberry Pi
 alias rbp="ssh angary@raspberrypi.local"
