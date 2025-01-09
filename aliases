@@ -41,6 +41,7 @@ alias gr="git reset"
 alias grba="git rebase --abort"
 alias grbc="git rebase --continue"
 alias grh="git reset --hard"
+alias grho="git reset --hard origin/HEAD"
 alias gs="git status"
 alias gsu="git status --untracked-files=no"
 
