@@ -3,7 +3,7 @@
 # Commit all and push
 function gacp() {
 	if [[ $# -eq 0 ]]; then
-		git add --all && git commit --amend --no-edit && git push --force-with-lease
+		git add --all && git commit --amend --no-edit && git push --force
 	else
 		git add --all && git commit -m "$1" && git push
 	fi
@@ -41,7 +41,7 @@ function grb() {
 
 # Git fetch, rebase and force push
 function gfrp() {
-	git fetch origin "$1":"$1" && git rebase "$1" && git push --force-with-lease
+	git fetch origin "$1":"$1" && git rebase "$1" && git push --force
 }
 
 # Reset with remote
