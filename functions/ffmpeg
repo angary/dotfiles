@@ -1,5 +1,23 @@
 #!/bin/zsh
 
+###############
+# TRANSCODING #
+###############
+h264() {
+	ffmpeg -i "$1" -c:v libx264 -c:a copy "${1%.*}.mp4"
+}
+
+h265() {
+	ffmpeg -i "$1" -c:v libx265 -c:a copy "${1%.*}".mp4
+}
+
+webm() {
+	ffmpeg -i "$1" -c vp9 -b:v 0 -crf 40 "${1%.*}".webm
+}
+
+########
+# MISC #
+########
 # Get audio codec
 audio_codec() {
 	ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 $1
@@ -18,16 +36,6 @@ extract_audio() {
 	codec=$(acodec $1)
 	new_file=${2:-"${file%.*}.${codec}"}
 	ffmpeg -i $file -vn -acodec copy $new_file
-}
-
-# Transcode video using h264
-h264() {
-	ffmpeg -i "$1" -c:v libx264 -c:a copy "${1%.*}.mp4"
-}
-
-# Transcode video using h265
-h265() {
-	ffmpeg -i "$1" -c:v libx265 -c:a copy "${1%.*}".mp4
 }
 
 # Get video codec
