@@ -3,8 +3,38 @@
 ###############
 # TRANSCODING #
 ###############
+
+# Transcode to gif optimised for static background
+gif() {
+    local input_file="$1"
+    shift
+    local fps_val="10"
+    local scale_val="640:-1"
+   	while [[ "$#" -gt 0 ]]; do
+   		case "$1" in
+   			--fps)
+   			fps_val="$2"
+   			shift
+   			;;
+   			--scale)
+   			scale_val="$2"
+   			shift
+   			;;
+   		esac
+   		shift
+   	done
+   
+   ffmpeg -i "$input_file" -filter_complex "[0:v]fps=$fps_val,scale=$scale_val
+      :flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse=dither=bayer:bayer_scale=5[g]" -map "[g]" "${input_file%.*}.gif"
+}
+
 h264() {
 	ffmpeg -i "$1" -c:v libx264 -c:a copy "${1%.*}.mp4"
+}
+
+# Used to convert macos recordings to mp4 and adjust visually to look more normal
+h264_mac() {
+	ffmpeg -i "$1" -vf "eq=brightness=0.0:contrast=1:gamma=0.95:saturation=1.0" -c:v libx264 -crf 23 -preset medium -c:a copy "${1%.*}.mp4"
 }
 
 h265() {
