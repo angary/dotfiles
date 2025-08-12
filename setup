@@ -34,3 +34,4 @@ setup_dir functions
 
 # Symlink files
 symlink tmux.conf ~/.tmux.config
+symlink AGENT.md ~/.config/AGENT.md
