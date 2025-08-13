@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 add_to_path() {
     export PATH="$PATH:$HOME/dev/dotfiles/$1"
