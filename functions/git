@@ -19,7 +19,12 @@ function gch() {
 	git checkout "${1:-$(git branch --all | fzf | awk '{print $1}')}"
 }
 
-# git checkout head
+# Git checkout remote
+function gchr() {
+	git checkout origin "$1":"$1" && git checkout "$1"
+}
+
+# Git checkout head
 function gchh() {
 	git checkout HEAD -- "$1"
 }
