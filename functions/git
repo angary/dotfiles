@@ -21,7 +21,7 @@ function gch() {
 
 # Git checkout remote
 function gchr() {
-	git checkout origin "$1":"$1" && git checkout "$1"
+	git fetch origin "$1":"$1" && git checkout "$1"
 }
 
 # Git checkout head
