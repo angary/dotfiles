@@ -1,4 +1,5 @@
-#!/bin/zsh
+# Sourced by both zsh and bash (macOS/Linux).
+# Uses only syntax compatible with both.
 
 # Bazel
 alias b="bazel"
@@ -17,8 +18,12 @@ alias fgrep="fgrep --color=auto"
 alias ffm="ffmpeg"
 alias ffp="ffprobe -hide_banner"
 
-# General
-alias reload="source ~/.zshrc"
+# General (reload sources the right rc for the current shell)
+if [ -n "$ZSH_VERSION" ]; then
+  alias reload="source ~/.zshrc"
+else
+  alias reload="source ~/.bashrc"
+fi
 
 # Git
 alias g="git"

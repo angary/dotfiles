@@ -1,11 +1,11 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 # cd into a directory and list contents
 function cdls() {
-    cd $1 && ls $_
+    cd "$1" && ls "$1"
 }
 
 # Make a directory and cd into it
 function mkcd() {
-    mkdir $1 && cd $_
+    mkdir -p "$1" && cd "$1"
 }

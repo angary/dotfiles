@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 ###############
 # TRANSCODING #
@@ -63,7 +63,7 @@ audio_frames() {
 # Extract raw audio into file, takes in additional optional argument for output file name
 extract_audio() {
 	file=$1
-	codec=$(acodec $1)
+	codec=$(audio_codec "$1")
 	new_file=${2:-"${file%.*}.${codec}"}
 	ffmpeg -i $file -vn -acodec copy $new_file
 }

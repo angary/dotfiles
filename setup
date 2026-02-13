@@ -1,4 +1,7 @@
 #!/bin/bash
+# Dotfiles setup. Works on macOS (zsh) and Linux (bash).
+# On Linux with bash: clone repo, then from bash run: source ~/dev/dotfiles/setup
+# (or add that line to ~/.bashrc). Aliases/functions are written to work in both shells.
 
 add_to_path() {
     export PATH="$PATH:$HOME/dev/dotfiles/$1"
@@ -33,4 +36,4 @@ setup aliases
 setup_dir functions
 
 # Symlink files
-symlink tmux.conf ~/.tmux.config
+symlink tmux.conf ~/.tmux.conf
