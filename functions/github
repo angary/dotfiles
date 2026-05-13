@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Colors
+GREEN=$'\x1b[32m'
+CYAN=$'\x1b[36m'
+GRAY=$'\x1b[90m'
+YELLOW=$'\x1b[33m'
+BOLD=$'\x1b[1m'
+RESET=$'\x1b[0m'
+
+# Column widths
+ID_WIDTH=9
+TITLE_WIDTH=100
+AUTHOR_WIDTH=20
+BRANCH_WIDTH=37
+
+# ID width minus 1 for the '#' prefix in data rows
+ID_DATA_WIDTH=$((ID_WIDTH - 1))
+
+function prs() {
+  printf "${BOLD}%-${ID_WIDTH}s %-${TITLE_WIDTH}s %-${BRANCH_WIDTH}s %s${RESET}\n" \
+    "ID" "TITLE" "BRANCH" "CREATED AT"
+  gh pr list --author=@me \
+    --json number,title,headRefName,createdAt,url \
+    --template "{{range .}}{{printf \"\x1b]8;;%s\x1b\\\\${GREEN}#%-${ID_DATA_WIDTH}v${RESET}\x1b]8;;\x1b\\\\ %-${TITLE_WIDTH}s ${CYAN}%-${BRANCH_WIDTH}s${RESET} ${GRAY}%s${RESET}\n\" .url .number .title .headRefName (timeago .createdAt)}}{{end}}"
+}
+
+function rvs() {
+  printf "${BOLD}%-${ID_WIDTH}s %-${TITLE_WIDTH}s %-${AUTHOR_WIDTH}s %-${BRANCH_WIDTH}s %s${RESET}\n" \
+    "ID" "TITLE" "AUTHOR" "BRANCH" "CREATED AT"
+  gh pr list --search "review-requested:@me" \
+    --json number,title,author,headRefName,createdAt,url \
+    --template "{{range .}}{{printf \"\x1b]8;;%s\x1b\\\\${GREEN}#%-${ID_DATA_WIDTH}v${RESET}\x1b]8;;\x1b\\\\ %-${TITLE_WIDTH}s ${YELLOW}%-${AUTHOR_WIDTH}s${RESET} ${CYAN}%-${BRANCH_WIDTH}s${RESET} ${GRAY}%s${RESET}\n\" .url .number .title .author.login .headRefName (timeago .createdAt)}}{{end}}"
+}
