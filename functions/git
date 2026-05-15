@@ -14,6 +14,20 @@ function gbd() {
   	git branch --list "$1" | xargs -n 1 git branch -D
 }
 
+# List local branches by last author date
+function gbb() {
+	local gray=$'\x1b[90m'
+	local reset=$'\x1b[0m'
+
+	git for-each-ref \
+		--sort='-authordate:iso8601' \
+		--format='%(authordate:relative)%09%(refname:short)' \
+		refs/heads |
+	while IFS=$'\t' read -r relative_date branch; do
+		printf '%s%s%s\t%s\n' "$gray" "$relative_date" "$reset" "$branch"
+	done
+}
+
 # Fuzzy git checkout for branches
 function gch() {
 	git checkout "${1:-$(git branch --all | fzf | awk '{print $1}')}"
